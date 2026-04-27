@@ -1,0 +1,572 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    background-color: #bbb;
+}
+
+.area-definicoes {
+    display: flex;
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    padding: 10px 20px;
+    background-color: #efefef;
+    border-right: 1px solid #555;
+}
+
+label {
+    margin: 15px 0 5px 5px;
+    color: #555;
+}
+
+.form-check {
+    margin-left: 5px;
+}
+
+.form-check label{
+    margin: 0;
+}
+
+#botao-imprimir {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.area-previsualizacao {
+    margin: 0 0 0 30%;
+    padding: 0;
+    width: 70%;
+}
+
+.pagina-A4 {
+    display: flex;
+    background-color: #fff;
+    margin: 10px auto;
+    width: 210mm;
+    height: 297mm;
+    border: 1px solid #777;
+}
+
+.area-formulario {
+    display: flex;
+    flex-direction: column;
+    margin: 6.604mm 16.184mm 25.266mm 9.412mm;
+    /* width: 184.658mm;
+    height: 265.638mm; */
+    border: solid #000;
+    border-width: 1.92pt 1.44pt 1.44pt 1.92pt;
+}
+
+.cabecalho {
+    display: block;
+    width: 100%;
+}
+
+.linha {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 0.48pt solid #000;
+}
+
+.campo-formulario {
+    display: inline-block;
+    border-right: 0.48pt solid #000;
+    /*border-style: solid;
+    border-color: #000;*/
+}
+
+.cabecalho-linha-1 {
+    height: 6.833mm;;
+}
+
+.titulo-igreja {
+    width: 69.25278%;
+    font-size: 11.05pt;
+    font-weight: 700;
+    text-indent: 4.074mm;
+    color: #808080;
+    line-height: 6.833mm;
+    /* border-width: 0 0.48pt 0 0; */
+}
+
+.numeracao-formulario {
+    flex-grow: 1;
+    font-size: 9pt;
+    font-weight: 700;
+    line-height: 6.833mm;
+    text-indent: 2.14mm;
+    /* border-width: 0; */
+}
+
+.cabecalho-linha-2 {
+    height: 6.833mm;
+}
+
+.titulo-formulario {
+    width: 69.25278%;
+    font-size: 11.05pt;
+    font-weight: 700;
+    text-indent: 10.175mm;
+    color: black;
+    line-height: 6.833mm;
+    /* border-width: 0 0.48pt 0 0; */
+}
+
+.rotulo {
+    font-size: 8.05pt;
+    font-weight: 700;
+}
+
+.data-emissao {
+    flex-grow: 1;
+    font-size: 9pt;
+    line-height: 6.833mm;
+    text-indent: 2.14mm;
+    /* border-width: 0; */
+}
+
+.rotulo-negrito {
+    font-weight: 700;
+}
+
+#campo-data-emissao {
+    font-size: 10pt;
+    margin-left: 0.2cm;
+}
+
+.valor {
+    font-size: 10pt;
+    padding-left: 0.1cm;
+}
+
+.cabecalho-linha-3 {
+    height: 10.001mm;
+}
+
+.texto-informativo-formulario {
+    padding: 1mm 4.779mm;
+    font-size: 9.95pt;
+    line-height: 4mm;
+    color: black;
+    /* border-width: 0; */
+}
+
+.bloco-A-linha-1 {
+    height: 6.311mm;
+    line-height: 6.311mm;
+}
+
+.letra-identificadora {
+    width: 3.27559%;
+    font-size: 9pt;
+    font-weight: 700;
+    text-align: center;
+    /* border-width: 0 0.48pt 0 0; */
+}
+
+.titulo-bloco {
+    flex-grow: 1;
+    font-size: 9pt;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    background-color: #808080;
+    /* border-width: 0; */
+}
+
+.titulo-bloco-alinhado-esq {
+    flex-grow: 1;
+    font-size: 9pt;
+    font-weight: 700;
+    text-indent: 13.125mm;
+    color: #fff;
+    background-color: #808080;
+}
+
+.bloco-A-linha-2 {
+    height: 4.992mm;
+    line-height: 4.992mm;
+    text-indent: 1.635mm;
+}
+
+.rotulo-adm-setor {
+    width: 52.169mm;
+}
+
+.rotulo-num-casa-oracao {
+    width: 35.013mm;
+}
+
+.rotulo-nome-casa-oracao {
+    width: 57.52mm;
+}
+
+.rotulo-competencia {
+    flex-grow: 1;
+}
+
+.bloco-A-linha-3 {
+    height: 8.241mm;
+    line-height: 8.241mm;
+    text-indent: 1.635mm;
+}
+
+.adm-setor {
+    width: 52.169mm;
+}
+
+.num-casa-oracao {
+    width: 35.013mm;
+}
+
+.nome-casa-oracao {
+    width: 57.52mm;
+}
+
+.competencia {
+    flex-grow: 1;
+}
+
+.bloco-B-linha-1, .bloco-B-linha-2, .bloco-B-linha-3, .bloco-B-linha-4 {
+    font-size: 8.05pt;
+}
+
+.bloco-B-linha-1 {
+    height: 6.442;
+    line-height: 6.442mm;
+}
+
+.bloco-B-linha-2, .bloco-B-linha-3{
+    height: 4.002mm;
+    line-height: 4.002mm;
+}
+
+.bloco-B-linha-4 {
+    height: 5.997mm;
+    line-height: 5.997mm;
+}
+
+.bloco-B .rotulo {
+    text-indent: 4.626mm;
+}
+
+.bloco-B .sigla {
+    text-indent: 1.965mm;
+}
+
+.rotulo-entradas {
+    width: 19.66mm;
+}
+
+.sigla-TR {
+    width: 50.006mm;
+}
+
+.sigla-DR {
+    width: 40.005mm;
+}
+
+.sigla-CP {
+    width: 35.031mm;
+}
+
+.bloco-B-linha-2-esp-vazio {
+    width: 38.94mm;
+}
+
+.rotulo-saidas {
+    width: 19.66mm;
+}
+
+.sigla-TE {
+    width: 50.006mm;
+}
+
+.sigla-OB {
+    width: 40.005mm;
+}
+
+.sigla-PE {
+    width: 35.031mm;
+}
+
+.sigla-CR {
+    width: 38.94mm;
+}
+
+.rotulo-venda {
+    width: 19.66mm;
+}
+
+.sigla-VD {
+    width: 50.006mm;
+}
+
+.valor-da-venda {
+    flex-grow: 1;
+    /* width: 75.25mm; */
+    text-indent: 10.465mm;
+    font-weight: 700;
+}
+
+.bloco-B-linha-4-esp-vazio {
+    width: 38.94mm;
+}
+
+.bloco-C-linha-1 {
+    height: 5.965mm;
+    line-height: 5.965mm;
+}
+
+.bloco-C-linha-2 {
+    height: 4.18mm;
+    line-height: 4.18mm;
+    text-align: center;
+}
+
+.rotulo-tipo {
+    width: 14.757mm;
+}
+
+.rotulo-quantidade {
+    width: 14.993mm;
+}
+
+.rotulo-descricao-bem {
+    width: 85.919mm;
+}
+
+.rotulo-documento {
+    width: 20.532mm;
+}
+
+.rotulo-valor {
+    width: 21.484mm;
+}
+
+.rotulo-dependencia {
+    flex-grow: 1;
+}
+
+#linhaInutilizacao {
+    display: block;
+    width: 183.7mm;
+    height: 136.5mm;
+    margin: 81mm 16.184mm 0 10mm;
+    position: absolute;
+    z-index: 2;
+}
+
+.linha-tabela {
+    height: 7.179mm;
+    line-height: 7.179mm;
+}
+
+.celula-tipo {
+    width: 14.757mm;
+    text-align: center;
+}
+
+.celula-quantidade {
+    width: 14.993mm;
+    text-align: center;
+}
+
+.celula-descricao-bem {
+    width: 85.919mm;
+    padding: 0 2.14mm;
+}
+
+.celula-documento {
+    width: 20.532mm;
+    text-align: center;
+}
+
+.celula-valor {
+    width: 21.484mm;
+    text-align: center;
+}
+
+.celula-dependencia {
+    flex-grow: 1;
+    text-align: center;
+}
+.bloco-D {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.bloco-D-linha-1 {
+    height: 5.891mm;
+    line-height: 5.891mm;
+}
+
+.bloco-D-linha-2 {
+    flex-grow: 1;
+    /* height: 20.003mm; */
+}
+
+.campo-observacoes {
+    width: 100%;
+    padding: 1.5mm 2.5mm;
+}
+
+.divisor {
+    height: 1.993mm;
+    width: 100%;
+    background-color: #bfbfbf;
+}
+
+.bloco-assinaturas {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.bloco-assinaturas-linha-1 {
+    height: 10.178mm;
+}
+
+.rotulo-nome {
+    width: 21.936mm;
+    padding-top: 5.1mm;
+    line-height: 2mm;
+    text-indent: 1.2mm;
+}
+
+.nome-anciao-diacono {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 75.301mm;
+}
+
+.rotulo-anciao-diacono {
+    display: block;
+    width: 100%;
+    height: 4.004mm;
+    line-height: 4.004mm;
+    text-indent: 1mm;
+    background-color: #d9d9d9;
+    border-bottom: 0.48pt solid black;
+}
+
+.valor-nome-anciao-diacono {
+    display: block;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.nome-responsavel {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.rotulo-responsavel {
+    display: block;
+    width: 100%;
+    height: 4.004mm;
+    line-height: 4.004mm;
+    text-indent: 1mm;
+    background-color: #d9d9d9;
+    border-bottom: 0.48pt solid black;
+}
+
+.valor-nome-responsavel {
+    display: block;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.bloco-assinaturas-linha-2 {
+    height: 12.171mm;
+}
+
+.rotulo-assinatura {
+    width: 21.936mm;
+    line-height: 12.171mm;
+    text-indent: 1.2mm;
+}
+
+.assinatura-anciao-diacono {
+    display: flex;
+    width: 75.301mm;
+}
+
+.assinatura-responsavel {
+    display: flex;
+    flex-grow: 1;
+}
+
+.bloco-assinaturas-linha-3 {
+    display: flex;
+    flex-grow: 1;
+}
+
+.orientacoes-rodape {
+    display: block;
+    width: 100%;
+    height: 4.142mm;
+    line-height: 4.142mm;
+    text-align: center;
+}
+
+@media print {
+    body {
+        visibility: hidden;
+        background-color: transparent;
+        margin: 0;
+        width: 100% !important;
+    }
+
+    .container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container .row {
+        visibility: visible;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        position: relative;
+    }
+
+    .area-definicoes {
+        display: none;
+    }
+
+    .area-previsualizacao {
+        display: flex;
+        visibility: visible;
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .pagina-A4 {
+        margin: auto;
+        position: relative;
+        /* border: none; */
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+}
+
+
+

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="area-definicoes">
+                <form class="form-group" id="formulario-definicoes">
+                    <label for="selectAdministracaoSetor">Administração / Setor:</label>
+                    <select class="custom-select" id="selectAdministracaoSetor">
+                        <option selected>Teresina-PI / Setor 1</option>
+                    </select>
+
+                    <label for="inputDataEmissao">Data de emissão</label>
+                    <input type="date" class="form-control" id="inputDataEmissao" oninput="atualizarDataEmissao()">
+
+                    <label for="selectCasaDeOracao">Casa de Oração: </label>
+                    <select name="" class="custom-select" id="selectCasaDeOracao" onchange="atualizarIgreja(this.value)">
+                        <option selected>[ Escolha a Casa de Oração ]</Selecione></option>
+                        <option value="0">Angelim</option>
+                        <option value="1">Areias</option>
+                        <option value="2">Areias II</option>
+                        <option value="3">Bela Vista I</option>
+                        <option value="4">Dirceu I</option>
+                        <option value="5">Elesbão Veloso</option>
+                        <option value="6">Lourival Parente</option>
+                        <option value="7">Mário Covas</option>
+                        <option value="8">Nazária - Baixão Grande</option>
+                        <option value="9">Nazaria - Bom Jardim</option>
+                        <option value="10">Nazária - Parque Vitória</option>
+                        <option value="11">Palitolândia</option>
+                        <option value="12">Parque Itararé</option>
+                        <option value="13">Parque Jurema</option>
+                        <option value="14">Parque Piauí</option>
+                        <option value="15">Parque Sul</option>
+                        <option value="16">Parque Vitória - Angelim</option>
+                        <option value="17">Porto Alegre</option>
+                        <option value="18">Pov. Cerâmica Cil</option>
+                        <option value="19">Pov. Chapadinha Sul</option>
+                        <option value="20">Vila da Paz</option>
+                        <option value="21">Vila Irmã Dulce</option>
+                    </select>
+
+                    <label for="inputMesCompetencia">Mês de Competência:</label>
+                    <input type="month" class="form-control" id="inputMesCompetencia" oninput="atualizarMesCompetencia()">
+                    
+                    <label for="">Houve movimentação mensal de bens?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioButtonsMovimentacaoMensal" id="radioMovimentacaoSim" value="sim">
+                        <label class="form-check-label" for="radioMovimentacaoSim">Sim</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioButtonsMovimentacaoMensal" id="radioMovimentacaoNao" value="nao" checked>
+                        <label class="form-check-label" for="radioMovimentacaoNao">Não</label>
+                    </div>
+
+                    <button type="Button" class="btn btn-primary" id="botao-imprimir" onclick="window.print()">Imprimir</button>
+                </form>
+            </div>
+            <div class="area-previsualizacao">
+                <div class="pagina-A4">
+                    <img src="./Imagens/linhaInutilizacao.svg" id="linhaInutilizacao" ></img>
+                    <div class="area-formulario">
+                        <div class="cabecalho">
+                            <div class="linha cabecalho-linha-1">
+                                <div class="titulo-igreja campo-formulario">
+                                    <p class="texto-titulo-igreja">CONGREGAÇÃO CRISTÃ NO BRASIL</p>
+                                </div>
+                                <div class="numeracao-formulario campo-formulario">FORMULÁRIO 14.8</div>
+                            </div>
+
+                            <div class="linha cabecalho-linha-2">
+                                <div class="titulo-formulario campo-formulario">MOVIMENTO MENSAL DE BENS</div>
+                                <div class="data-emissao campo-formulario"><span class="rotulo-negrito">Data Emissão:</span><span id="campo-data-emissao">Data Atual</span></div>
+                            </div>
+
+                            <div class="linha cabecalho-linha-3">
+                                <div class="texto-informativo-formulario campo-formulario">Este formulário deve ser
+                                    preenchido mensalmente com os dados das movimentações de entradas e saídas de bens
+                                    na Casa de Oração.</div>
+                            </div>
+                        </div>
+                        <div class="bloco-A">
+                            <div class="linha bloco-A-linha-1">
+                                <div class="letra-identificadora campo-formulario">A</div>
+                                <div class="titulo-bloco campo-formulario">LOCALIDADE EMISSORA</div>
+                            </div>
+                            <div class="linha bloco-A-linha-2">
+                                <div class="rotulo-adm-setor campo-formulario rotulo">Administração / Setor</div>
+                                <div class="rotulo-num-casa-oracao campo-formulario rotulo">Nº da Casa de Oração</div>
+                                <div class="rotulo-nome-casa-oracao campo-formulario rotulo">Nome da Casa de oração
+                                </div>
+                                <div class="rotulo-competencia campo-formulario rotulo">Competência</div>
+                            </div>
+
+                            <div class="linha bloco-A-linha-3">
+                                <div class="adm-setor campo-formulario valor" id="campo-adm-setor"></div>
+                                <div class="num-casa-oracao campo-formulario valor" id="campo-num-casa-oracao"></div>
+                                <div class="nome-casa-oracao campo-formulario valor" id="campo-nome-casa-oracao"></div>
+                                <div class="competencia campo-formulario valor" id="campo-mes-competencia"></div>
+                            </div>
+                        </div>
+                        <div class="bloco-B">
+                            <div class="linha bloco-B-linha-1">
+                                <div class="letra-identificadora campo-formulario">B</div>
+                                <div class="titulo-bloco campo-formulario">TIPOS DE MOVIMENTAÇÃO</div>
+                            </div>
+                            <div class="linha bloco-B-linha-2">
+                                <div class="campo-formulario rotulo rotulo-entradas">Entradas</div>
+                                <div class="campo-formulario sigla sigla-TR"><strong>TR</strong> - Transferência
+                                    recebida</div>
+                                <div class="campo-formulario sigla sigla-DR"><strong>DR</strong> - Doação recebida</div>
+                                <div class="campo-formulario sigla sigla-CP"><strong>CP</strong> - Compra</div>
+                                <div class="campo-formulario bloco-B-linha-2-esp-vazio"></div>
+                            </div>
+                            <div class="linha bloco-B-linha-3">
+                                <div class="campo-formulario rotulo rotulo-saidas">Saídas</div>
+                                <div class="campo-formulario sigla sigla-TE"><strong>TE</strong> - Transferência enviada
+                                </div>
+                                <div class="campo-formulario sigla sigla-OB"><strong>OB</strong> - Obsolescência</div>
+                                <div class="campo-formulario sigla sigla-PE"><strong>PE</strong> - Perda / estravio
+                                </div>
+                                <div class="campo-formulario sigla sigla-CR"><strong>CR</strong> - Crime</div>
+                            </div>
+                            <div class="linha bloco-B-linha-4">
+                                <div class="campo-formulario rotulo rotulo-venda">Venda</div>
+                                <div class="campo-formulario sigla sigla-VD"><strong>VD</strong> - Venda</div>
+                                <div class="campo-formulario valor-da-venda">Valor da venda: R$</div>
+                                <div class="campo-formulario bloco-B-linha-4-esp-vazio"></div>
+                            </div>
+                        </div>
+                        <div class="bloco-C">
+                            <div class="linha bloco-C-linha-1">
+                                <div class="letra-identificadora campo-formulario">C</div>
+                                <div class="titulo-bloco campo-formulario">DADOS DA MOVIMENTAÇÃO</div>
+                            </div>
+                            <div class="linha bloco-C-linha-2">
+                                <div class="campo-formulario rotulo rotulo-tipo">Tipo</div>
+                                <div class="campo-formulario rotulo rotulo-quantidade">Quant</div>
+                                <div class="campo-formulario rotulo rotulo-descricao-bem">Descrição do bem
+                                    (marca/modelo)</div>
+                                <div class="campo-formulario rotulo rotulo-documento">Documento</div>
+                                <div class="campo-formulario rotulo rotulo-valor">Valor</div>
+                                <div class="campo-formulario rotulo rotulo-dependencia">Dependência</div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-1">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-2">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-3">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-4">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-5">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-6">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-7">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-8">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-9">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-10">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-11">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-12">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-13">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-14">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-15">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-16">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-17">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-18">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                            <div class="linha linha-tabela tabela-linha-19">
+                                <div class="campo-formulario valor celula-tipo"></div>
+                                <div class="campo-formulario valor celula-quantidade"></div>
+                                <div class="campo-formulario valor celula-descricao-bem"></div>
+                                <div class="campo-formulario valor celula-documento"></div>
+                                <div class="campo-formulario valor celula-valor"></div>
+                                <div class="campo-formulario valor celula-dependencia"></div>
+                            </div>
+                        </div>
+                        <div class="bloco-D">
+                            <div class="linha bloco-D-linha-1">
+                                <div class="letra-identificadora campo-formulario">D</div>
+                                <div class="titulo-bloco-alinhado-esq campo-formulario">OBSERVAÇÕES</div>
+                            </div>
+                            <div class="linha bloco-D-linha-2">
+                                <div class="campo-formulario valor campo-observacoes" id="campo-observacoes">Não houve movimentações de bens no mês em questão.</div>
+                            </div>
+                            <div class="linha bloco-D-linha-3">
+                                <div class="campo-formulario divisor"></div>
+                            </div>
+                        </div>
+                        <div class="bloco-assinaturas">
+                            <div class="linha bloco-assinaturas-linha-1">
+                                <div class="rotulo-nome rotulo campo-formulario">Nome</div>
+                                <div class="nome-anciao-diacono campo-formulario">
+                                    <div class="rotulo-anciao-diacono rotulo">Ancião / Diácono</div>
+                                    <div class="valor-nome-anciao-diacono valor"></div>
+                                </div>
+                                <div class="nome-responsavel campo-formulario">
+                                    <div class="rotulo-responsavel rotulo">Responsável pelas informações</div>
+                                    <div class="valor-nome-responsavel valor"></div>
+                                </div>
+                            </div>
+                            <div class="linha bloco-assinaturas-linha-2">
+                                <div class="rotulo-assinatura rotulo campo-formulario">Assinatura</div>
+                                <div class="assinatura-anciao-diacono valor campo-formulario"></div>
+                                <div class="assinatura-responsavel valor campo-formulario"></div>
+                            </div>
+                            <div class="linha bloco-assinaturas-linha-3">
+                                <div class="orientacoes-rodape rotulo campo-formulario">Enviar obrigatoriamente anexo ao
+                                    Balancete financeiro</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
