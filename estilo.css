@@ -12,12 +12,18 @@ body {
 
 .area-definicoes {
     display: flex;
-    position: fixed;
-    width: 30%;
-    height: 100%;
+    /*position: fixed;*/
+    /*width: 30%;*/
+    /*height: 100%;*/
     padding: 10px 20px;
     background-color: #efefef;
-    border-right: 1px solid #555;
+    border: 1px solid #555;
+    z-index: 3;
+}
+
+#formulario-definicoes {
+    display: block;
+    margin: 0 auto;
 }
 
 label {
@@ -35,22 +41,24 @@ label {
 
 #botao-imprimir {
     width: 100%;
-    margin-top: 15px;
+    margin: 15px 0 15px 0;
 }
 
 .area-previsualizacao {
-    margin: 0 0 0 30%;
-    padding: 0;
-    width: 70%;
+    /*margin: 0 0 0 30%;*/
+    padding: 10px;
+    /*width: 70%;*/
 }
 
 .pagina-A4 {
     display: flex;
     background-color: #fff;
-    margin: 10px auto;
+    margin: 0 auto;
     width: 210mm;
     height: 297mm;
     border: 1px solid #777;
+    transform: scale(calc(100vw/100));
+    transform-origin: top left;
 }
 
 .area-formulario {
@@ -60,7 +68,7 @@ label {
     /* width: 184.658mm;
     height: 265.638mm; */
     border: solid #000;
-    border-width: 1.92pt 1.44pt 1.44pt 1.92pt;
+    border-width: 1.92pt;
 }
 
 .cabecalho {
@@ -80,6 +88,10 @@ label {
     border-right: 0.48pt solid #000;
     /*border-style: solid;
     border-color: #000;*/
+}
+
+.ultima-celula {
+    border-right: none;
 }
 
 .cabecalho-linha-1 {
@@ -361,7 +373,7 @@ label {
     height: 136.5mm;
     margin: 81mm 16.184mm 0 10mm;
     position: absolute;
-    z-index: 2;
+    z-index: 1;
 }
 
 .linha-tabela {
@@ -450,7 +462,7 @@ label {
 }
 
 .rotulo-anciao-diacono {
-    display: block;
+    display: flex;
     width: 100%;
     height: 4.004mm;
     line-height: 4.004mm;
@@ -473,7 +485,7 @@ label {
 }
 
 .rotulo-responsavel {
-    display: block;
+    display: flex;
     width: 100%;
     height: 4.004mm;
     line-height: 4.004mm;
@@ -519,7 +531,65 @@ label {
     height: 4.142mm;
     line-height: 4.142mm;
     text-align: center;
+    border-bottom: 0pt;
 }
+
+/*Configurações de responsividade*/
+
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    .area-definicoes {
+        margin-bottom: 10px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .area-definicoes {
+        margin-bottom: 10px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .area-definicoes {
+        display: flex;
+        position: fixed;
+        height: 100%;
+    }
+
+    .area-previsualizacao {
+        margin-left: 33.333%
+    }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .area-definicoes {
+        display: flex;
+        position: fixed;
+        height: 100%;
+    }
+
+    .area-previsualizacao {
+        margin-left: 33.333%
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .area-definicoes {
+        display: flex;
+        position: fixed;
+        height: 100%;
+    }
+
+    .area-previsualizacao {
+        margin-left: 33.333%
+    }
+}
+
+/*Configurações para impressão*/
 
 @media print {
     body {

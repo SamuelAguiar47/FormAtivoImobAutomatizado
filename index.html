@@ -14,7 +14,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="area-definicoes">
+            <div class="area-definicoes col-md-4">
                 <form class="form-group" id="formulario-definicoes">
                     <label for="selectAdministracaoSetor">Administração / Setor:</label>
                     <select class="custom-select" id="selectAdministracaoSetor">
@@ -51,7 +51,7 @@
                         <option value="21">Vila Irmã Dulce</option>
                     </select>
 
-                    <label for="inputMesCompetencia">Mês de Competência:</label>
+                    <label for="inputMesCompetencia">Mês de Competência:</small></label>
                     <input type="month" class="form-control" id="inputMesCompetencia" oninput="atualizarMesCompetencia()">
                     
                     <label for="">Houve movimentação mensal de bens?</label>
@@ -64,11 +64,11 @@
                         <label class="form-check-label" for="radioMovimentacaoNao">Não</label>
                     </div>
 
-                    <button type="Button" class="btn btn-primary" id="botao-imprimir" onclick="window.print()">Imprimir</button>
+                    <button type="Button" class="btn btn-primary" id="botao-imprimir" onclick="imprimirPagina()">Imprimir</button>
                 </form>
             </div>
-            <div class="area-previsualizacao">
-                <div class="pagina-A4">
+            <div class="area-previsualizacao col-md-8" id="area-previsualizacao">
+                <div class="pagina-A4" id="pagina-A4">
                     <img src="./Imagens/linhaInutilizacao.svg" id="linhaInutilizacao" ></img>
                     <div class="area-formulario">
                         <div class="cabecalho">
@@ -76,16 +76,16 @@
                                 <div class="titulo-igreja campo-formulario">
                                     <p class="texto-titulo-igreja">CONGREGAÇÃO CRISTÃ NO BRASIL</p>
                                 </div>
-                                <div class="numeracao-formulario campo-formulario">FORMULÁRIO 14.8</div>
+                                <div class="numeracao-formulario campo-formulario ultima-celula">FORMULÁRIO 14.8</div>
                             </div>
 
                             <div class="linha cabecalho-linha-2">
                                 <div class="titulo-formulario campo-formulario">MOVIMENTO MENSAL DE BENS</div>
-                                <div class="data-emissao campo-formulario"><span class="rotulo-negrito">Data Emissão:</span><span id="campo-data-emissao">Data Atual</span></div>
+                                <div class="data-emissao campo-formulario ultima-celula"><span class="rotulo-negrito">Data Emissão:</span><span id="campo-data-emissao">Data Atual</span></div>
                             </div>
 
                             <div class="linha cabecalho-linha-3">
-                                <div class="texto-informativo-formulario campo-formulario">Este formulário deve ser
+                                <div class="texto-informativo-formulario campo-formulario ultima-celula">Este formulário deve ser
                                     preenchido mensalmente com os dados das movimentações de entradas e saídas de bens
                                     na Casa de Oração.</div>
                             </div>
@@ -93,27 +93,27 @@
                         <div class="bloco-A">
                             <div class="linha bloco-A-linha-1">
                                 <div class="letra-identificadora campo-formulario">A</div>
-                                <div class="titulo-bloco campo-formulario">LOCALIDADE EMISSORA</div>
+                                <div class="titulo-bloco campo-formulario ultima-celula">LOCALIDADE EMISSORA</div>
                             </div>
                             <div class="linha bloco-A-linha-2">
                                 <div class="rotulo-adm-setor campo-formulario rotulo">Administração / Setor</div>
                                 <div class="rotulo-num-casa-oracao campo-formulario rotulo">Nº da Casa de Oração</div>
                                 <div class="rotulo-nome-casa-oracao campo-formulario rotulo">Nome da Casa de oração
                                 </div>
-                                <div class="rotulo-competencia campo-formulario rotulo">Competência</div>
+                                <div class="rotulo-competencia campo-formulario rotulo ultima-celula">Competência</div>
                             </div>
 
                             <div class="linha bloco-A-linha-3">
                                 <div class="adm-setor campo-formulario valor" id="campo-adm-setor"></div>
                                 <div class="num-casa-oracao campo-formulario valor" id="campo-num-casa-oracao"></div>
                                 <div class="nome-casa-oracao campo-formulario valor" id="campo-nome-casa-oracao"></div>
-                                <div class="competencia campo-formulario valor" id="campo-mes-competencia"></div>
+                                <div class="competencia campo-formulario valor ultima-celula" id="campo-mes-competencia"></div>
                             </div>
                         </div>
                         <div class="bloco-B">
                             <div class="linha bloco-B-linha-1">
                                 <div class="letra-identificadora campo-formulario">B</div>
-                                <div class="titulo-bloco campo-formulario">TIPOS DE MOVIMENTAÇÃO</div>
+                                <div class="titulo-bloco campo-formulario ultima-celula">TIPOS DE MOVIMENTAÇÃO</div>
                             </div>
                             <div class="linha bloco-B-linha-2">
                                 <div class="campo-formulario rotulo rotulo-entradas">Entradas</div>
@@ -121,7 +121,7 @@
                                     recebida</div>
                                 <div class="campo-formulario sigla sigla-DR"><strong>DR</strong> - Doação recebida</div>
                                 <div class="campo-formulario sigla sigla-CP"><strong>CP</strong> - Compra</div>
-                                <div class="campo-formulario bloco-B-linha-2-esp-vazio"></div>
+                                <div class="campo-formulario bloco-B-linha-2-esp-vazio ultima-celula"></div>
                             </div>
                             <div class="linha bloco-B-linha-3">
                                 <div class="campo-formulario rotulo rotulo-saidas">Saídas</div>
@@ -130,19 +130,19 @@
                                 <div class="campo-formulario sigla sigla-OB"><strong>OB</strong> - Obsolescência</div>
                                 <div class="campo-formulario sigla sigla-PE"><strong>PE</strong> - Perda / estravio
                                 </div>
-                                <div class="campo-formulario sigla sigla-CR"><strong>CR</strong> - Crime</div>
+                                <div class="campo-formulario sigla sigla-CR ultima-celula"><strong>CR</strong> - Crime</div>
                             </div>
                             <div class="linha bloco-B-linha-4">
                                 <div class="campo-formulario rotulo rotulo-venda">Venda</div>
                                 <div class="campo-formulario sigla sigla-VD"><strong>VD</strong> - Venda</div>
                                 <div class="campo-formulario valor-da-venda">Valor da venda: R$</div>
-                                <div class="campo-formulario bloco-B-linha-4-esp-vazio"></div>
+                                <div class="campo-formulario bloco-B-linha-4-esp-vazio ultima-celula"></div>
                             </div>
                         </div>
                         <div class="bloco-C">
                             <div class="linha bloco-C-linha-1">
                                 <div class="letra-identificadora campo-formulario">C</div>
-                                <div class="titulo-bloco campo-formulario">DADOS DA MOVIMENTAÇÃO</div>
+                                <div class="titulo-bloco campo-formulario ultima-celula">DADOS DA MOVIMENTAÇÃO</div>
                             </div>
                             <div class="linha bloco-C-linha-2">
                                 <div class="campo-formulario rotulo rotulo-tipo">Tipo</div>
@@ -151,7 +151,7 @@
                                     (marca/modelo)</div>
                                 <div class="campo-formulario rotulo rotulo-documento">Documento</div>
                                 <div class="campo-formulario rotulo rotulo-valor">Valor</div>
-                                <div class="campo-formulario rotulo rotulo-dependencia">Dependência</div>
+                                <div class="campo-formulario rotulo rotulo-dependencia ultima-celula">Dependência</div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-1">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -159,7 +159,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-2">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -167,7 +167,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-3">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -175,7 +175,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-4">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -183,7 +183,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-5">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -191,7 +191,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-6">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -199,7 +199,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-7">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -207,7 +207,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-8">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -215,7 +215,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-9">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -223,7 +223,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-10">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -231,7 +231,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-11">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -239,7 +239,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-12">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -247,7 +247,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-13">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -255,7 +255,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-14">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -263,7 +263,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-15">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -271,7 +271,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-16">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -279,7 +279,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-17">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -287,7 +287,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-18">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -295,7 +295,7 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                             <div class="linha linha-tabela tabela-linha-19">
                                 <div class="campo-formulario valor celula-tipo"></div>
@@ -303,40 +303,40 @@
                                 <div class="campo-formulario valor celula-descricao-bem"></div>
                                 <div class="campo-formulario valor celula-documento"></div>
                                 <div class="campo-formulario valor celula-valor"></div>
-                                <div class="campo-formulario valor celula-dependencia"></div>
+                                <div class="campo-formulario valor celula-dependencia ultima-celula"></div>
                             </div>
                         </div>
                         <div class="bloco-D">
                             <div class="linha bloco-D-linha-1">
                                 <div class="letra-identificadora campo-formulario">D</div>
-                                <div class="titulo-bloco-alinhado-esq campo-formulario">OBSERVAÇÕES</div>
+                                <div class="titulo-bloco-alinhado-esq campo-formulario ultima-celula">OBSERVAÇÕES</div>
                             </div>
                             <div class="linha bloco-D-linha-2">
-                                <div class="campo-formulario valor campo-observacoes" id="campo-observacoes">Não houve movimentações de bens no mês em questão.</div>
+                                <div class="campo-formulario valor campo-observacoes ultima-celula" id="campo-observacoes">Não houve movimentações de bens no mês em questão.</div>
                             </div>
                             <div class="linha bloco-D-linha-3">
-                                <div class="campo-formulario divisor"></div>
+                                <div class="campo-formulario divisor ultima-celula"></div>
                             </div>
                         </div>
                         <div class="bloco-assinaturas">
                             <div class="linha bloco-assinaturas-linha-1">
                                 <div class="rotulo-nome rotulo campo-formulario">Nome</div>
-                                <div class="nome-anciao-diacono campo-formulario">
-                                    <div class="rotulo-anciao-diacono rotulo">Ancião / Diácono</div>
-                                    <div class="valor-nome-anciao-diacono valor"></div>
+                                <div class="nome-anciao-diacono">
+                                    <div class="rotulo-anciao-diacono rotulo campo-formulario">Ancião / Diácono</div>
+                                    <div class="valor-nome-anciao-diacono valor campo-formulario"></div>
                                 </div>
-                                <div class="nome-responsavel campo-formulario">
-                                    <div class="rotulo-responsavel rotulo">Responsável pelas informações</div>
-                                    <div class="valor-nome-responsavel valor"></div>
+                                <div class="nome-responsavel">
+                                    <div class="rotulo-responsavel rotulo campo-formulario ultima-celula">Responsável pelas informações</div>
+                                    <div class="valor-nome-responsavel valor campo-formulario ultima-celula"></div>
                                 </div>
                             </div>
                             <div class="linha bloco-assinaturas-linha-2">
                                 <div class="rotulo-assinatura rotulo campo-formulario">Assinatura</div>
                                 <div class="assinatura-anciao-diacono valor campo-formulario"></div>
-                                <div class="assinatura-responsavel valor campo-formulario"></div>
+                                <div class="assinatura-responsavel valor campo-formulario ultima-celula"></div>
                             </div>
                             <div class="linha bloco-assinaturas-linha-3">
-                                <div class="orientacoes-rodape rotulo campo-formulario">Enviar obrigatoriamente anexo ao
+                                <div class="orientacoes-rodape rotulo campo-formulario ultima-celula">Enviar obrigatoriamente anexo ao
                                     Balancete financeiro</div>
                             </div>
                         </div>

@@ -34,6 +34,8 @@ atualizarDataEmissao();
 atualizarCampoAdmSetor();
 atualizarMesCompetencia();
 verificarMovimentacao();
+ajustarPagina();
+window.addEventListener('resize', ajustarPagina);
 
 }
 
@@ -44,14 +46,17 @@ function carregarDataAtual() {
 
     let dataAtualFormatada = `${anoAtual}-${mesAtual}-${diaAtual}`
 
-    inputDataEmissao = document.getElementById("inputDataEmissao");
+    let inputDataEmissao = document.getElementById("inputDataEmissao");
     inputDataEmissao.value = dataAtualFormatada;
 }
 
 function carregarCompetenciaAtual() {
     let anoAtual = dataAtual.getFullYear();
+    console.log(anoAtual)
     let mesAtual = String(dataAtual.getMonth()+1).padStart(2, '0');
+    console.log(mesAtual)
     let diaAtual = String(dataAtual.getDate()).padStart(2, '0');
+    console.log(diaAtual)
 
     let mesCompetencia;
     let anoCompetencia;
@@ -60,17 +65,18 @@ function carregarCompetenciaAtual() {
         mesCompetencia = mesAtual;
         anoCompetencia = anoAtual;
     } else {
-        mesCompetencia = mesAtual - 1;
+        mesCompetencia = String(mesAtual - 1).padStart(2, '0');
         if(mesAtual==1) {
-            anoCompetencia = anoAtual - 1;
+            anoCompetencia = String(anoAtual - 1).padStart(2, '0');
         } else {
             anoCompetencia = anoAtual;
         }
     }
 
     let competenciaAtualFormatada = `${anoAtual}-${mesCompetencia}`;
+    console.log(competenciaAtualFormatada)
 
-    inputMesCompetencia = document.getElementById("inputMesCompetencia");
+    let inputMesCompetencia = document.getElementById("inputMesCompetencia");
     inputMesCompetencia.value = competenciaAtualFormatada;
 }
 
@@ -83,7 +89,7 @@ function atualizarDataEmissao() {
 
     let dataEmissaoFormatada = `${diaEmissao}/${mesEmissao}/${anoEmissao}`
 
-    campoDataEmissao = document.getElementById("campo-data-emissao");
+    let campoDataEmissao = document.getElementById("campo-data-emissao");
     campoDataEmissao.innerText = dataEmissaoFormatada;
 }
 
@@ -94,7 +100,7 @@ function atualizarMesCompetencia() {
     
     let dataCompetenciaFormatada = `${mesCompetencia}/${anoCompetencia}`;
 
-    campoMesCompetencia = document.getElementById("campo-mes-competencia");
+    let campoMesCompetencia = document.getElementById("campo-mes-competencia");
     campoMesCompetencia.innerText = dataCompetenciaFormatada;
 }
 
@@ -147,4 +153,57 @@ function verificarMovimentacao() {
         }
     });
 });
+}
+
+function ajustarPagina() {
+    let paginaA4 = document.getElementById("pagina-A4");
+    let areaPrev = document.getElementById("area-previsualizacao");
+
+    let areaPrevWidth = areaPrev.clientWidth - 20;
+    let paginaA4Width = paginaA4.clientWidth;
+
+    let proporcao = (areaPrevWidth)/paginaA4Width;
+
+    if (proporcao < 1) {
+        paginaA4.style.transform = `scale(${proporcao})`;
+    } else {
+        paginaA4.style.transform = `scale(1)`;
+    }
+    
+}
+
+function verificarCampos() {
+    let inputDataEmissao = document.getElementById("inputDataEmissao");
+    let dataEmissao = new Date(inputDataEmissao.value).getTime();
+    let selectCasaOracao = document.getElementById("selectCasaDeOracao");
+    let inputMesCompetencia = document.getElementById("inputMesCompetencia");
+    let dataCompetencia = new Date(inputMesCompetencia.value).getTime();
+
+    if (isNaN(dataEmissao)) {
+        alert("Por favor selecione uma data de emissão válida.");
+        return false;
+    } else if (selectCasaOracao.value == "[ Escolha a Casa de Oração ]") {
+        alert("Por favor selecione uma casa de oração válida.");
+        return false;
+    } else if (isNaN(dataCompetencia)) {
+        alert("Por favor selecione um mês de competência válido.");
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function imprimirPagina() {
+    if (verificarCampos()) {
+        let paginaA4 = document.getElementById("pagina-A4");
+        let paginaWidthAtual = paginaA4.getBoundingClientRect().width;
+        let paginaWidthOriginal = paginaA4.clientWidth;
+        paginaA4.style.transform = `scale(1)`;
+        let proporcaoCorrecao = (paginaWidthAtual)/(paginaWidthOriginal);
+        
+        window.print();
+
+        paginaA4.style.transform = `scale(${proporcaoCorrecao})`;
+    }
 }
