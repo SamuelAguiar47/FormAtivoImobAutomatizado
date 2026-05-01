@@ -518,6 +518,7 @@ label {
 .bloco-assinaturas-linha-3 {
     display: flex;
     flex-grow: 1;
+    border-bottom: none;
 }
 
 .orientacoes-rodape {
