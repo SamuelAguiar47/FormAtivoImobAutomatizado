@@ -611,8 +611,7 @@ label {
         position: absolute;
         margin: 0 !important;
         padding: 0 !important;
-        width: 100%;
-        height: 100%;
+        height: calc(50px)
     }
 
     .pagina-A4 {

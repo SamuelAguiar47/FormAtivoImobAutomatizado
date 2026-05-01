@@ -165,7 +165,7 @@ function ajustarPagina() {
         areaPrev.style.height = paginaA4.getBoundingClientRect().height + 20 + 'px';
     } else {
         paginaA4.style.transform = `scale(1)`;
-        areaPrev.style.height = paginaA4.offsetHeight + 'px';
+        areaPrev.style.height = paginaA4.offsetHeight + 20 + 'px';
     }
 
 }
@@ -194,14 +194,12 @@ function verificarCampos() {
 
 function imprimirPagina() {
     if (verificarCampos()) {
-        /*let paginaA4 = document.getElementById("pagina-A4");
-        let paginaWidthAtual = paginaA4.getBoundingClientRect().width;
-        let paginaWidthOriginal = paginaA4.clientWidth;
-        paginaA4.style.transform = `scale(1)`;
-        let proporcaoCorrecao = (paginaWidthAtual)/(paginaWidthOriginal);*/
+        let areaPrev = document.getElementById('area-previsualizacao');
+        let areaPrevAlturaOriginal = areaPrev.offsetHeight;
+        areaPrev.style.height = areaPrevAlturaOriginal - 20 + 'px';
         
         window.print();
 
-        /*paginaA4.style.transform = `scale(${proporcaoCorrecao})`;*/
+        areaPrev.style.height = areaPrev.offsetHeight + 20 + 'px';
     }
 }
