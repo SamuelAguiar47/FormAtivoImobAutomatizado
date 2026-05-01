@@ -162,10 +162,12 @@ function ajustarPagina() {
 
     if (proporcao < 1) {
         paginaA4.style.transform = `scale(${proporcao})`;
+        areaPrev.style.height = paginaA4.getBoundingClientRect().height + 20 + 'px';
     } else {
         paginaA4.style.transform = `scale(1)`;
+        areaPrev.style.height = paginaA4.offsetHeight + 'px';
     }
-    
+
 }
 
 function verificarCampos() {

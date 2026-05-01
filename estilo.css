@@ -12,9 +12,6 @@ body {
 
 .area-definicoes {
     display: flex;
-    /*position: fixed;*/
-    /*width: 30%;*/
-    /*height: 100%;*/
     padding: 10px 20px;
     background-color: #efefef;
     border: 1px solid #555;
@@ -45,10 +42,8 @@ label {
 }
 
 .area-previsualizacao {
-    /*margin: 0 0 0 30%;*/
+    display: flex;
     padding: 10px;
-    height: fit-content;
-    /*width: 70%;*/
 }
 
 .pagina-A4 {
@@ -538,16 +533,10 @@ label {
 
 /* Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
-    .area-definicoes {
-        margin-bottom: 5px;
-    }
 }
 
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .area-definicoes {
-        margin-bottom: 5px;
-    }
 }
 
 /* Medium devices (tablets, 768px and up)*/
@@ -620,8 +609,8 @@ label {
         display: flex;
         visibility: visible;
         position: absolute;
-        margin: 0;
-        padding: 0;
+        margin: 0 !important;
+        padding: 0 !important;
         width: 100%;
         height: 100%;
     }
