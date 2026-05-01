@@ -52,11 +52,8 @@ function carregarDataAtual() {
 
 function carregarCompetenciaAtual() {
     let anoAtual = dataAtual.getFullYear();
-    console.log(anoAtual)
     let mesAtual = String(dataAtual.getMonth()+1).padStart(2, '0');
-    console.log(mesAtual)
     let diaAtual = String(dataAtual.getDate()).padStart(2, '0');
-    console.log(diaAtual)
 
     let mesCompetencia;
     let anoCompetencia;
@@ -74,7 +71,6 @@ function carregarCompetenciaAtual() {
     }
 
     let competenciaAtualFormatada = `${anoAtual}-${mesCompetencia}`;
-    console.log(competenciaAtualFormatada)
 
     let inputMesCompetencia = document.getElementById("inputMesCompetencia");
     inputMesCompetencia.value = competenciaAtualFormatada;
@@ -196,14 +192,14 @@ function verificarCampos() {
 
 function imprimirPagina() {
     if (verificarCampos()) {
-        let paginaA4 = document.getElementById("pagina-A4");
+        /*let paginaA4 = document.getElementById("pagina-A4");
         let paginaWidthAtual = paginaA4.getBoundingClientRect().width;
         let paginaWidthOriginal = paginaA4.clientWidth;
         paginaA4.style.transform = `scale(1)`;
-        let proporcaoCorrecao = (paginaWidthAtual)/(paginaWidthOriginal);
+        let proporcaoCorrecao = (paginaWidthAtual)/(paginaWidthOriginal);*/
         
         window.print();
 
-        paginaA4.style.transform = `scale(${proporcaoCorrecao})`;
+        /*paginaA4.style.transform = `scale(${proporcaoCorrecao})`;*/
     }
 }
