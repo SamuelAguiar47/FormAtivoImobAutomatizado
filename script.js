@@ -78,10 +78,13 @@ function carregarCompetenciaAtual() {
 
 function atualizarDataEmissao() {
     let valorDataEmissao = new Date(document.getElementById("inputDataEmissao").value);
-    
+    console.log(valorDataEmissao);
+    valorDataEmissao.setDate(valorDataEmissao.getDate() + 1);
+    console.log(valorDataEmissao);
+
     let anoEmissao = valorDataEmissao.getFullYear();
     let mesEmissao = String(valorDataEmissao.getMonth()+1).padStart(2, '0');
-    let diaEmissao = String(valorDataEmissao.getDate()+1).padStart(2, '0');
+    let diaEmissao = String(valorDataEmissao.getDate()).padStart(2, '0');
 
     let dataEmissaoFormatada = `${diaEmissao}/${mesEmissao}/${anoEmissao}`
 
