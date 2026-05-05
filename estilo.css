@@ -10,12 +10,18 @@ body {
     background-color: #bbb;
 }
 
+body.modal-open {
+    overflow-y: scroll !important;
+    padding-right: 0 !important;
+}
+
 .area-definicoes {
     display: flex;
     padding: 10px 20px;
     background-color: #efefef;
     border: 1px solid #555;
     z-index: 3;
+    overflow-y: auto;
 }
 
 #formulario-definicoes {
@@ -136,7 +142,7 @@ label {
     font-size: 9pt;
     line-height: 6.833mm;
     text-indent: 2.14mm;
-    /* border-width: 0; */
+    overflow: hidden;
 }
 
 .rotulo-negrito {
@@ -144,8 +150,11 @@ label {
 }
 
 #campo-data-emissao {
+    display: inline-block;
     font-size: 10pt;
-    margin-left: 0.2cm;
+    margin-left: 2mm;
+    width: 30mm;
+    height: 18.5pt;
 }
 
 .valor {
@@ -239,6 +248,7 @@ label {
 
 .competencia {
     flex-grow: 1;
+    overflow: hidden;
 }
 
 .bloco-B-linha-1, .bloco-B-linha-2, .bloco-B-linha-3, .bloco-B-linha-4 {

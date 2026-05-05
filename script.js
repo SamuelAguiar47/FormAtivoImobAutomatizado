@@ -175,13 +175,16 @@ function verificarCampos() {
     let dataCompetencia = new Date(inputMesCompetencia.value).getTime();
 
     if (isNaN(dataEmissao)) {
-        alert("Por favor selecione uma data de emissão válida.");
+        $('#modalAlert .modal-body').html("Por favor selecione uma <strong>Data de Emissão</strong> válida.");
+        $('#modalAlert').modal('show');
         return false;
     } else if (selectCasaOracao.value == "[ Escolha a Casa de Oração ]") {
-        alert("Por favor selecione uma casa de oração válida.");
+        $('#modalAlert .modal-body').html("Por favor selecione uma <strong>Casa de Oração</strong> válida.");
+        $('#modalAlert').modal('show');
         return false;
     } else if (isNaN(dataCompetencia)) {
-        alert("Por favor selecione um mês de competência válido.");
+        $('#modalAlert .modal-body').html("Por favor selecione um <strong>Mês de Competência</strong> válido.");
+        $('#modalAlert').modal('show');
         return false;
     } else {
         return true;
